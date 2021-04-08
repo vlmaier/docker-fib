@@ -1,0 +1,22 @@
+sudo: required
+service:
+  	- docker
+
+before_install:
+	- docker build -t vlmaier/docker-fib -f ./client/Dockerfile.dev ./client
+
+script:
+  	- docker run -e CI=true vlmaier/docker-fib npm test -- --coverage
+
+after_success:
+	- docker build -t vlmaier/fib-client ./client
+	- docker build -t vlmaier/fib-nginx ./nginx
+	- docker build -t vlmaier/fib-server ./server
+	- docker build -t vlmaier/fib-worker ./worker
+	# Log in to the docker CLI
+	- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID"--password-stdin
+	# Take those images and push them to docker hub
+	- docker push vlmaier/fib-client
+	- docker push vlmaier/fib-nginx
+	- docker push vlmaier/fib-server
+	- docker push vlmaier/fib-worker
