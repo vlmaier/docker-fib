@@ -12,4 +12,4 @@ The application itself calculates fibonacci numbers. To determine and send the f
 - Node Client
 - React UI
 
-It is deployed using Travis CI and Dockerhub.
+It is deployed using Travis CI & Docker Hub.
