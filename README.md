@@ -1,7 +1,6 @@
 ![](https://github.com/vlmaier/docker-fib/actions/workflows/build-client.yml/badge.svg)
 ![](https://github.com/vlmaier/docker-fib/actions/workflows/build-server.yml/badge.svg)
 ![](https://github.com/vlmaier/docker-fib/actions/workflows/build-worker.yml/badge.svg)
-[![](https://app.travis-ci.com/vlmaier/docker-fib.svg?branch=master)](https://app.travis-ci.com/vlmaier/docker-fib)
 
 # docker-fib
 
