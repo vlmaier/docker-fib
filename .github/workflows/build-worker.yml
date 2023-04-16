@@ -6,14 +6,13 @@ on:
   pull_request:
     branches: [ "master" ]
 
-defaults:
-  run:
-    working-directory: ./worker
-
 jobs:
   build-:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: worker
 
     strategy:
       matrix:
@@ -26,7 +25,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          cache-dependency-path: "./worker/package-lock.json"
+          cache-dependency-path: "worker/package-lock.json"
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
