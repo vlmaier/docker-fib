@@ -10,7 +10,9 @@ jobs:
   build-client:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./client
     strategy:
       matrix:
         node-version: [ 14.x, 16.x, 18.x ]
@@ -18,7 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        working-directory: ./client
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
@@ -30,7 +31,9 @@ jobs:
   build-server:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./server
     strategy:
       matrix:
         node-version: [ 14.x, 16.x, 18.x ]
@@ -38,7 +41,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        working-directory: ./server
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
@@ -50,7 +52,9 @@ jobs:
   build-worker:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./worker
     strategy:
       matrix:
         node-version: [ 14.x, 16.x, 18.x ]
@@ -58,7 +62,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        working-directory: ./worker
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
