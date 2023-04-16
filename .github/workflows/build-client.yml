@@ -5,7 +5,7 @@ on:
     branches: [ "master" ]
     paths:
       - '.github/workflows/build-client.yml'
-      - 'worker/**'
+      - 'client/**'
   pull_request:
     branches: [ "master" ]
 
