@@ -3,6 +3,9 @@ name: build-client
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - '.github/workflows/**'
+      - 'worker/**'
   pull_request:
     branches: [ "master" ]
 
@@ -20,11 +23,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        id: filter
-        with:
-          filters:
-            - '.github/workflows/**'
-            - 'client/**'
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
